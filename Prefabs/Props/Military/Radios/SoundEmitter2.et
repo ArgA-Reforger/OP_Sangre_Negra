@@ -1,0 +1,26 @@
+GenericEntity : "{4CC2C69DE1AEF103}Prefabs/Props/Core/Destructible_Props_Base.et" {
+ ID "F0DBA538AC2A0552"
+ components {
+  SoundComponent "{65BD78FA853219FF}" {
+   Filenames {
+    "{9D94BEBA8AA8A997}Sounds/Particles/Logistics/Explosion/Fuel/Particles_Explosions_Fuel_Large.acp"
+   }
+   Events {
+    SoundEventInfoClass "{65BD78FA853219EA}" {
+     Name "SOUND_EXPLOSION"
+    }
+   }
+  }
+  MeshObject "{5872F0EB7FA40561}" {
+   Enabled 0
+   Object "{1C690C170310109F}Assets/Props/Military/Radios/RadioStation_ANGRC160_01.xob"
+  }
+  RigidBody "{5872F0EB7DFB5A9D}" {
+   Enabled 0
+   ResponseIndex "SmallDestructible"
+   ModelGeometry 1
+   Static 1
+  }
+ }
+ coords 0 0 0
+}

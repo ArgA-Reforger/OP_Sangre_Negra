@@ -1,0 +1,359 @@
+SCR_AIWorld : "{3DE6090FC602E566}Prefabs/AI/SCR_AIWorld_Takistan.et" {
+ coords 6359.446 350.025 5092.776
+}
+PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/PerceptionManager.et" {
+ coords 6361.2 350.055 5093.146
+}
+SCR_BaseGameMode GameMode_Base1 : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
+ components {
+  SCR_NametagConfigComponent "{571AA9E54FC9210D}" {
+   m_sConfigPath "{09F7AAA14A642683}Configs/NameTags/NametagFriendlies.conf"
+  }
+  SCR_RespawnBriefingComponent "{65C355DB693815D7}" {
+   m_sJournalConfigPath "{EBFEB0E907C97C37}Configs/Journal/JournalOPSangreNegra.conf"
+  }
+  SCR_RespawnSystemComponent "{56B2B4793051E7C9}" {
+   m_SpawnLogic SCR_MenuSpawnLogic "{65C56A103413A32B}" {
+    m_sForcedFaction "ARGA"
+    m_aSpectatorLoadoutAssignments {
+     GRAD_SpectatorLoadoutAssignment "{65C56A17CD6FFBD3}" {
+      m_sFactionKey "ARGA"
+      m_sLoadoutName "Desarmado"
+     }
+    }
+    m_sForcedSpawnPoint "Spectator"
+   }
+  }
+  SCR_TimeAndWeatherHandlerComponent "{65C431CEF7364F7D}" {
+   m_iStartingHours 0
+  }
+  SCR_VotingManagerComponent "{5650BB6B6089393A}" {
+   m_aVotingTemplates {
+    SCR_VotingEditorIn "{65C4565BD3AD697C}" {
+     m_Type EDITOR_IN
+     m_bIsValuePlayerID 1
+     m_EditorModes 5
+    }
+   }
+  }
+  SCR_WelcomeScreenComponent "{65B7257911681A05}" {
+   Enabled 0
+  }
+ }
+ coords 6363.199 350.314 5088.416
+ userScript "	protected ref set<int> m_SpectatorPlayers = new set<int>();"\
+ ""\
+ "	override void OnGameStart()"\
+ "	{"\
+ "		super.OnGameStart();"\
+ "		Print(\"Game started.\");"\
+ "	}"\
+ ""\
+ "	override void OnPlayerKilled(int playerId, IEntity playerEntity, IEntity killerEntity, notnull Instigator killer)"\
+ "	{"\
+ "		super.OnPlayerKilled(playerId, playerEntity, killerEntity, killer);"\
+ "		PrintFormat(\"Player %1 died. Spawning at spectator point...\", playerId);"\
+ ""\
+ "		m_SpectatorPlayers.Insert(playerId);"\
+ "		SpawnAtSpectatorPoint(playerId);"\
+ "	}"\
+ ""\
+ "	// Get the faction via the faction component"\
+ "	Faction GetPlayerFaction(int playerId)"\
+ "	{"\
+ "		IEntity controlledEntity = GetGame().GetPlayerManager().GetPlayerControlledEntity(playerId);"\
+ "		if (!controlledEntity)"\
+ "			return null;"\
+ ""\
+ "		SCR_PlayerFactionAffiliationComponent factionComponent = SCR_PlayerFactionAffiliationComponent.Cast(controlledEntity.FindComponent(SCR_PlayerFactionAffiliationComponent));"\
+ "		if (factionComponent)"\
+ "			return factionComponent.GetAffiliatedFaction();"\
+ ""\
+ "		return null;"\
+ "	}"\
+ ""\
+ "	void SpawnAtSpectatorPoint(int playerId)"\
+ "	{"\
+ "		// Get the player's faction"\
+ "		Faction faction = SCR_FactionManager.SGetPlayerFaction(playerId);"\
+ "		if (!faction)"\
+ "		{"\
+ "			PrintFormat(\"No faction found for player %1\", playerId);"\
+ "			return;"\
+ "		}"\
+ "	"\
+ "		// Get a random loadout for the faction"\
+ "		SCR_BasePlayerLoadout loadout = GetGame().GetLoadoutManager().GetRandomFactionLoadout(faction);"\
+ "		if (!loadout)"\
+ "		{"\
+ "			PrintFormat(\"No loadout found for player %1\", playerId);"\
+ "			return;"\
+ "		}"\
+ "	"\
+ "		// Find a spawn point named \"Spectator\""\
+ "		SCR_SpawnPoint targetPoint;"\
+ "		array<SCR_SpawnPoint> spawnPoints = SCR_SpawnPoint.GetSpawnPoints();"\
+ "		foreach (SCR_SpawnPoint sp : spawnPoints)"\
+ "		{"\
+ "			if (sp.GetSpawnPointName() == \"Spectator\")"\
+ "			{"\
+ "				targetPoint = sp;"\
+ "				break;"\
+ "			}"\
+ "		}"\
+ "	"\
+ "		if (!targetPoint)"\
+ "		{"\
+ "			Print(\"Spectator spawn point not found\", LogLevel.ERROR);"\
+ "			return;"\
+ "		}"\
+ "	"\
+ "		// Create spawn data"\
+ "		SCR_SpawnPointSpawnData spawnData = new SCR_SpawnPointSpawnData(loadout.GetLoadoutResource(), targetPoint.GetRplId());"\
+ "	"\
+ "		// Get the player's RespawnComponent and request spawn"\
+ "		SCR_RespawnComponent respawnComp = SCR_RespawnComponent.Cast(GetGame().GetPlayerManager().GetPlayerRespawnComponent(playerId));"\
+ "		if (!respawnComp)"\
+ "		{"\
+ "			PrintFormat(\"No RespawnComponent found for player %1\", playerId);"\
+ "			return;"\
+ "		}"\
+ "	"\
+ "		respawnComp.RequestSpawn(spawnData);"\
+ "	"\
+ "		// Optional: Set camera to spectate after delay"\
+ "		GetGame().GetCallqueue().CallLater(EnableSpectator, 5000, false, playerId);"\
+ "	}"\
+ ""\
+ ""\
+ "	void EnableSpectator(int playerId)"\
+ "	{"\
+ "		SCR_PlayerController pc = SCR_PlayerController.Cast(GetGame().GetPlayerManager().GetPlayerController(playerId));"\
+ "		if (pc && !pc.IsSpectator())"\
+ "		{"\
+ "			pc.EnableSpectator();"\
+ "			PrintFormat(\"Spectator mode enabled for player %1\", playerId);"\
+ "		}"\
+ "	}"\
+ ""\
+ "	override bool CanPlayerSpawn_S(SCR_SpawnRequestComponent requestComponent, SCR_SpawnHandlerComponent handlerComponent, SCR_SpawnData data, out SCR_ESpawnResult result = SCR_ESpawnResult.SPAWN_NOT_ALLOWED)"\
+ "	{"\
+ "		int playerId = requestComponent.GetPlayerId();"\
+ ""\
+ "		if (m_SpectatorPlayers.Contains(playerId))"\
+ "		{"\
+ "			result = SCR_ESpawnResult.CANNOT_SPAWN;"\
+ "			return false;"\
+ "		}"\
+ ""\
+ "		result = SCR_ESpawnResult.OK;"\
+ "		return true;"\
+ "	}"
+}
+SCR_FactionManager FactionManager_Editor1 : "{4A188E44289B9A50}Prefabs/MP/Managers/Factions/FactionManager_Editor.et" {
+ coords 6370.528 350.647 5099.116
+ Factions {
+  SCR_Faction "{56DEAC40D2DBC8B1}" {
+   m_bShowInWelcomeScreenIfNonPlayable 0
+  }
+  SCR_Faction "{56DEAC40D3C2E623}" {
+   m_bShowInWelcomeScreenIfNonPlayable 0
+  }
+  SCR_Faction "{56DEAC40D132400B}" {
+   m_bShowInWelcomeScreenIfNonPlayable 0
+  }
+  SCR_Faction "{5978B9CE6585BBE8}" {
+   m_bShowInWelcomeScreenIfNonPlayable 0
+  }
+  SCR_Faction "{623962205CE2B89C}" {
+   m_bShowInWelcomeScreenIfNonPlayable 0
+  }
+  SCR_Faction "{65B631EE5BA371A5}" : "{522366618E395914}Configs/Factions/ARGA.conf" {
+  }
+  SCR_Faction "{65BD6087BB386BDC}" : "{830970F42196ADAF}Configs/Factions/MEI.conf" {
+  }
+ }
+}
+ScriptedChatEntity : "{536D80EB494DDC43}Prefabs/MP/Campaign/CampaignMPChatEntity.et" {
+ coords 6341.722 350.23 5067.188
+}
+TimeAndWeatherManagerEntity : "{A3BAF78F6F03315B}Prefabs/World/Game/TimeAndWeatherManager.et" {
+ coords 5582.226 109.312 11221.039
+ WeatherStateMachine "{145430BBF1620448}Terrains/Common/WeatherPresets/StateMachine/WeatherStates.conf"
+ "Initial Day Time" 11.19
+ Year 2017
+ "Day of the Month" 19
+ Latitude -90
+ Longitude -120.706
+ "Internal variant transition" 0
+ "Internal subvariant 0" 0
+ "Internal subvariant 1" 0
+ "Initial Wetness" 0
+ "Sunrise signal Offset" 0
+ "Sunset signal Offset" 0
+}
+RadioManagerEntity : "{B8E09FAB91C4ECCD}Prefabs/Radio/RadioManager.et" {
+ coords 6364.497 350.302 5090.312
+}
+SCR_SpawnPoint : "{0BF61D9D5EF77711}Prefabs/MP/Spawning/SpawnPoint_ARGA_CP.et" {
+ components {
+  SCR_MapDescriptorComponent "{54C659A97C47BDE2}" {
+   DisplayName "Inicio ArgA"
+   VisibleOnMap 1
+   Scale 10
+  }
+ }
+ coords 6359.891 350.608 5074.763
+ angleY -128.103
+ m_bShowInDeployMapOnly 0
+ m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
+  Name "Inicio ArgA"
+ }
+ m_bUseNearbySpawnPositions 1
+}
+SCR_LoadoutManager : "{1181E02A10EBAFA4}Prefabs/MP/Managers/Loadouts/LoadoutManager_ARGA.et" {
+ coords 6366.303 350.448 5087.964
+ m_aPlayerLoadouts {
+  SCR_FactionPlayerLoadout "{65A704FD3A45980B}" : "{394C3D06A78F8A61}Configs/Loadouts/ARGA/Loadout_ARGA_Fusilero.conf" {
+  }
+  SCR_FactionPlayerLoadout "{65A704FD3746299B}" : "{5BE9B581C00A4D8D}Configs/Loadouts/ARGA/Loadout_ARGA_GL.conf" {
+  }
+  SCR_FactionPlayerLoadout "{65A704FECFDC4334}" : "{3C039CD00393B7DD}Configs/Loadouts/ARGA/Loadout_ARGA_AT.conf" {
+  }
+  SCR_FactionPlayerLoadout "{65A704FECD01B6F4}" : "{364AEC1C36BF37C9}Configs/Loadouts/ARGA/Loadout_ARGA_ING.conf" {
+  }
+  SCR_FactionPlayerLoadout "{65A704FECDC6FBFA}" : "{6B75ACE0B46B5F6B}Configs/Loadouts/ARGA/Loadout_ARGA_MED.conf" {
+  }
+  SCR_FactionPlayerLoadout "{65A704FEC28F457E}" : "{14BE05D651721E5A}Configs/Loadouts/ARGA/Loadout_ARGA_MG.conf" {
+  }
+  SCR_FactionPlayerLoadout "{65A704FEC3702912}" : "{6770234DE50A410A}Configs/Loadouts/ARGA/Loadout_ARGA_PIL.conf" {
+  }
+  SCR_FactionPlayerLoadout "{65A704FEC039D567}" : "{D8B03E65AB2E4F61}Configs/Loadouts/ARGA/Loadout_ARGA_TD.conf" {
+  }
+  SCR_FactionPlayerLoadout "{65A704FEDF8D21B4}" {
+  }
+ }
+}
+$grp LightEntity : "{325D270D0A1FE2D4}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_01/LightPrefabs/LampStreet_E_01_light.et" {
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 6799.348 356.122 8122.703
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 6794.97 356.122 8122.845
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 6790.369 356.122 8122.792
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 6781.126 356.122 8122.807
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 6776.547 356.122 8122.811
+ }
+ {
+  components {
+   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+    Enabled 1
+    m_fForceToDamageScale 350
+    m_fDamageThresholdMaximum 10
+   }
+   StreetLampComponent "{55A0954A909C9109}" {
+    Enabled 1
+    "Emissive Color" 0.651 0.839 0.549 1
+   }
+   RplComponent "{585699AC653DD54C}" {
+    Enabled 1
+   }
+  }
+  coords 6785.285 356.131 8122.859
+ }
+}
+StaticModelEntity : "{7762F50A860DD074}Prefabs/Props/Military/Furniture/TableMilitary_US_01.et" {
+ coords 6376.569 351.256 5082.871
+ angleY 126.592
+}
+SCR_EditorManagerEntity EditorManager : "{788933FFDC706A68}Prefabs/Editor/EditorManager.et" {
+ coords 6355.759 350.212 5084.589
+ {
+  SCR_EditorModeEntity spectator_mode : "{F2E336600176AE02}Prefabs/Editor/Modes/EditorModeSpectate.et" {
+   coords -5.289 -0.511 7.951
+   m_bSendNotificationLocalOnly 1
+  }
+ }
+}
+SCR_SpawnPoint Spectator : "{E7F4D5562F48DDE4}Prefabs/MP/Spawning/SpawnPoint_Base.et" {
+ coords 6792.11 350.555 8123.015
+ m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
+  Name "Spectator"
+ }
+}
