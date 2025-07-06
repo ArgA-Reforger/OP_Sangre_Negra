@@ -1,0 +1,172 @@
+GenericEntity BaseArga1 : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Components/Area.et" {
+ coords 6382.739 350.968 5091.552
+ {
+  $grp GenericEntity : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
+   ArgaSpawn1 {
+    components {
+     SCR_ScenarioFrameworkLayerBase "{5A2283EA2A0B4B14}" {
+      m_sFactionKey "ARGA"
+     }
+    }
+    coords 0 0 0
+    {
+     SCR_SpawnPoint : "{0BF61D9D5EF77711}Prefabs/MP/Spawning/SpawnPoint_ARGA_CP.et" {
+      components {
+       SCR_MapDescriptorComponent "{54C659A97C47BDE2}" {
+        DisplayName "Inicio ArgA"
+        VisibleOnMap 1
+        Scale 10
+       }
+      }
+      coords -21.092 -0.624 -5.3
+      angleY -143.558
+      m_bShowInDeployMapOnly 0
+      m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
+       Name "Inicio ArgA"
+      }
+      m_bUseNearbySpawnPositions 1
+     }
+     $grp GenericEntity : "{EFA7233213E77C2E}Prefabs/Systems/SpawnPoints/SpawnPosition.et" {
+      {
+       coords -23.101 -0.928 0.749
+      }
+      {
+       coords -26.733 -1.075 0.955
+      }
+      {
+       coords -18.377 -0.772 0.48
+      }
+      {
+       coords -17.831 -1.02 5.573
+      }
+      {
+       coords -21.68 -1.104 4.803
+      }
+      {
+       coords -26.709 -0.919 -3.692
+      }
+      {
+       coords -23.466 -0.795 -3.837
+      }
+      {
+       coords -19.132 -0.601 -4.072
+      }
+     }
+    }
+   }
+   Props1 {
+    coords 0 0 0
+    {
+     $grp GameEntity : "{0E94F28FD722B1D8}Prefabs/Props/Military/Generators/GeneratorFloodlight_US_01.et" {
+      {
+       components {
+        SCR_BaseInteractiveLightComponent "{587E9C1D47ACAF0D}" {
+         m_eInitialLightState LIT
+        }
+       }
+       coords 13.068 1.101 -38.853
+       angleX -4.21
+       angleY -51.31
+       angleZ 2.077
+      }
+      {
+       components {
+        SCR_BaseInteractiveLightComponent "{587E9C1D47ACAF0D}" {
+         m_eInitialLightState LIT
+        }
+       }
+       coords -12.105 -0.34 -2.434
+       angleY -73
+      }
+      {
+       components {
+        SCR_BaseInteractiveLightComponent "{587E9C1D47ACAF0D}" {
+         m_eInitialLightState LIT
+        }
+       }
+       coords -59.908 -2.351 -8.547
+       angleX 3.915
+       angleY 136.751
+       angleZ -3.287
+      }
+     }
+     $grp StaticModelEntity : "{785F322AC3DFD4B9}Prefabs/Compositions/Misc/SubCompositions/Furniture/Chair_Light_US_01.et" {
+      {
+       coords -31.876 -1.286 5.853
+       angleY 0
+      }
+      {
+       coords -36.366 -1.4 0.179
+       angleY -85
+      }
+     }
+    }
+   }
+   SpawmVehicles1 {
+    coords 0 0 0
+    angleX -0.852
+    angleY 0.017
+    angleZ -1.137
+    {
+     GameEntity : "{0E94F28FD722B1D8}Prefabs/Props/Military/Generators/GeneratorFloodlight_US_01.et" {
+      components {
+       SCR_BaseInteractiveLightComponent "{587E9C1D47ACAF0D}" {
+        m_eInitialLightState LIT
+       }
+      }
+      coords -21.932 0.354 -42.705
+      angleX -1.421
+      angleY 22.462
+      angleZ -0.28
+     }
+     $grp GenericEntity : "{AA01691FDC4E9167}Prefabs/Systems/ScenarioFramework/Components/Slot.et" {
+      Slot_LAV25_RHS_D1 {
+       components {
+        SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+         m_sObjectToSpawn "{123595894023C474}Prefabs/Vehicles/Wheeled/LAV25/LAV25_RHS_D.et"
+        }
+       }
+       coords -41.646 -1.037 -1.18
+       angleX -3.22
+       angleY -47.594
+       angleZ -0.255
+      }
+      SlotK4386_1 {
+       components {
+        SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+         m_sObjectToSpawn "{A61E5C16E9A2161A}Prefabs/Vehicles/Wheeled/K4386/K4386.et"
+        }
+       }
+       coords -36.156 -0.522 -10.502
+       angleX -2.59
+       angleY -51.966
+       angleZ -0.308
+      }
+      SlotUral4320_1 {
+       components {
+        SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+         m_sObjectToSpawn "{16E32C3ABEAFC2C6}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_FIA_transport.et"
+        }
+       }
+       coords -25.381 -0.181 -15.054
+       angleX -1.862
+       angleY -51.153
+       angleZ -0.406
+      }
+      SlotUral4320_2 {
+       components {
+        SCR_ScenarioFrameworkSlotBase "{5A22E1D67E712EC8}" {
+         m_sObjectToSpawn "{16E32C3ABEAFC2C6}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_FIA_transport.et"
+        }
+       }
+       coords -17.278 -0.086 -25.345
+       angleX -1.819
+       angleY -50.984
+       angleZ -0.012
+      }
+     }
+    }
+   }
+  }
+ }
+}

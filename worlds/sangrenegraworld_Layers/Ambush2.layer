@@ -1,0 +1,154 @@
+SCR_BaseFactionTriggerEntity Ambush2 {
+ coords 6841.783 236.504 7023.264
+ userScript "	bool m_bAlreadyTriggered = false;"
+ TriggerShapeType Sphere
+ SphereRadius 19.6
+ TriggerActivationType "First change"
+ PeriodicQueries 1
+ OnActivate ""\
+ "		if (m_bAlreadyTriggered)"\
+ "			return;"\
+ "		m_bAlreadyTriggered = true;"\
+ "		"\
+ "		BaseVehicleControllerComponent vehicleController = BaseVehicleControllerComponent.Cast(ent.FindComponent(BaseVehicleControllerComponent));"\
+ "		if (vehicleController)"\
+ "		{"\
+ "			vehicleController.StopEngine();"\
+ "			vehicleController.LockPilotControls(true);"\
+ "		}"\
+ "	    vector start = Vector(6847.118, 234.73, 7040.357);"\
+ "		vector end = Vector(6827.954, 243.36, 6973.074);"\
+ ""\
+ "		ResourceName particle = \"{8B9323E3EEFBFE99}Particles/Logistics/Explosion/TNT/Explosion_TNT_Small.ptc\";"\
+ "		int count = 10;"\
+ "		float delay = 0.5;"\
+ ""\
+ "		vector dir = end - start;"\
+ "		float segmentLength = dir.Length() / (count - 1);"\
+ "		vector dirNormalized = dir.Normalized();"\
+ "		vector perp = Vector(-dirNormalized[2], 0, dirNormalized[0]);"\
+ ""\
+ "		for (int i = 0; i < count; i++)"\
+ "		{"\
+ "			vector basePos = start + dirNormalized * (segmentLength * i);"\
+ "			float offsetDirValue;"\
+ "			if ((i % 2) == 0)"\
+ "				offsetDirValue = 4.0;"\
+ "			else"\
+ "				offsetDirValue = -4.0;"\
+ ""\
+ "			float zigzagAmount = 2.0;"\
+ "			vector zigzagOffset = perp * (zigzagAmount * offsetDirValue);"\
+ "			vector finalPos = basePos + zigzagOffset + Vector(0, 1.5, 0);"\
+ ""\
+ "			GetGame().GetCallqueue().CallLater(SpawnEffect, i * delay * 1000, false, particle, finalPos);"\
+ "		}"\
+ ""\
+ "		SpawnAmbushGroups();"\
+ "		"\
+ "	    GetGame().GetCallqueue().CallLater(SCR_EntityHelper.DeleteEntityAndChildren, 4000, false, this);"\
+ "	"\
+ "	}"\
+ ""\
+ "	void SpawnEffect(ResourceName particleEffect, vector position)"\
+ "	{"\
+ "		ParticleEffectEntitySpawnParams params = new ParticleEffectEntitySpawnParams();"\
+ "		params.TransformMode = ETransformMode.WORLD;"\
+ "		params.Transform[3] = position;"\
+ "		params.PlayOnSpawn = true;"\
+ "		params.DeleteWhenStopped = true;"\
+ ""\
+ "		ParticleEffectEntity spawned = ParticleEffectEntity.SpawnParticleEffect(particleEffect, params);"\
+ "		if (!spawned)"\
+ "		{"\
+ "			Print(\"Failed to spawn ParticleEffectEntity\", LogLevel.ERROR);"\
+ "			return;"\
+ "		}"\
+ ""\
+ "		string soundEmitterPrefab = \"{AC25DD038613D88C}Prefabs/Props/Military/Radios/SoundEmitter.et\";"\
+ "		IEntity soundEntity = GetGame().SpawnEntityPrefab(Resource.Load(soundEmitterPrefab), null, EntitySpawnParams());"\
+ "		if (soundEntity)"\
+ "		{"\
+ "			soundEntity.SetOrigin(position);"\
+ "			SoundComponent soundComp = SoundComponent.Cast(soundEntity.FindComponent(SoundComponent));"\
+ "			if (soundComp)"\
+ "			{"\
+ "				soundComp.SoundEvent(\"SOUND_EXPLOSION\");"\
+ "			}"\
+ "		}"\
+ "	}"\
+ ""\
+ "	void SpawnAmbushGroups()"\
+ "	{"\
+ "		array<string> spawns = {\"Ambush_spawn5\", \"Ambush_spawn6\", \"Ambush_spawn7\", \"Ambush_spawn8\"};"\
+ "		ResourceName latGroup = \"{FAA19AFFCDF237A6}Prefabs/Groups/MEI/Group_MEI_Team_LAT.et\";"\
+ "		ResourceName fireTeam = \"{43A262F8A24DF461}Prefabs/Groups/MEI/Group_MEI_LightFireTeam.et\";"\
+ "		ResourceName waypointPrefab = \"{1B0E3436C30FA211}Prefabs/AI/Waypoints/AIWaypoint_Attack.et\";"\
+ ""\
+ "		IEntity wpEntity = GetGame().GetWorld().FindEntityByName(\"ambush_attack2\");"\
+ "		if (!wpEntity)"\
+ "		{"\
+ "			Print(\"No ambush_attack waypoint found\", LogLevel.ERROR);"\
+ "			return;"\
+ "		}"\
+ ""\
+ "		vector wpPos = wpEntity.GetOrigin();"\
+ ""\
+ "		for (int i = 0; i < spawns.Count(); i++)"\
+ "		{"\
+ "			IEntity spawn = GetGame().GetWorld().FindEntityByName(spawns[i]);"\
+ "			if (!spawn)"\
+ "				continue;"\
+ ""\
+ "			vector pos = spawn.GetOrigin();"\
+ "			EntitySpawnParams spawnParams = EntitySpawnParams();"\
+ "			spawnParams.TransformMode = ETransformMode.WORLD;"\
+ "			spawnParams.Transform[3] = pos;"\
+ ""\
+ "			Resource groupRes;"\
+ "			if (i == 2)"\
+ "			    groupRes = Resource.Load(latGroup);"\
+ "			else"\
+ "			    groupRes = Resource.Load(fireTeam);"\
+ ""\
+ "			if (!groupRes.IsValid())"\
+ "				continue;"\
+ ""\
+ "			SCR_AIGroup group = SCR_AIGroup.Cast(GetGame().SpawnEntityPrefab(groupRes, null, spawnParams));"\
+ "			if (!group)"\
+ "				continue;"\
+ ""\
+ "			Resource wpRes = Resource.Load(waypointPrefab);"\
+ "			if (!wpRes.IsValid())"\
+ "				continue;"\
+ ""\
+ "			EntitySpawnParams wpParams = EntitySpawnParams();"\
+ "			wpParams.TransformMode = ETransformMode.WORLD;"\
+ "			wpParams.Transform[3] = wpPos;"\
+ ""\
+ "			AIWaypoint wp = AIWaypoint.Cast(GetGame().SpawnEntityPrefab(wpRes, null, wpParams));"\
+ "			if (wp)"\
+ "			{"\
+ "				group.AddWaypoint(wp);"\
+ "			}"\
+ "		}"\
+ "	"
+ m_sOwnerFactionKey "ARGA"
+}
+$grp GenericEntity : "{934A3C3A870634DC}PrefabsEditable/System/E_Comment.et" {
+ Ambush_spawn6 {
+  coords 6880.114 209.466 7059.622
+ }
+ Ambush_spawn5 {
+  coords 6948.877 249.02 7012.828
+ }
+ Ambush_spawn8 {
+  coords 6832.29 253.039 7196.94
+ }
+ Ambush_spawn7 {
+  coords 6722.393 291.121 7019.18
+ }
+}
+SCR_SearchAndDestroyWaypoint ambush_attack2 : "{B3E7B8DC2BAB8ACC}Prefabs/AI/Waypoints/AIWaypoint_SearchAndDestroy.et" {
+ coords 6840.292 237.652 7025.357
+}

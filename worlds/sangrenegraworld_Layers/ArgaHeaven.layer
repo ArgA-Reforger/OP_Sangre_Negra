@@ -1,0 +1,129 @@
+GenericEntity ArgaHeaven1 : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Components/Area.et" {
+ coords 6792.972 357.351 8124.16
+ {
+  GenericEntity Building1 : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
+   coords 0 0 0
+   {
+    $grp LightEntity : "{325D270D0A1FE2D4}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_01/LightPrefabs/LampStreet_E_01_light.et" {
+     {
+      components {
+       SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+        Enabled 1
+        m_fForceToDamageScale 350
+        m_fDamageThresholdMaximum 10
+       }
+       StreetLampComponent "{55A0954A909C9109}" {
+        Enabled 1
+        "Emissive Color" 0.651 0.839 0.549 1
+       }
+       RplComponent "{585699AC653DD54C}" {
+        Enabled 1
+       }
+      }
+      coords 6.376 -1.229 -1.457
+      angleY -180
+      angleZ -180
+     }
+     {
+      components {
+       SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+        Enabled 1
+        m_fForceToDamageScale 350
+        m_fDamageThresholdMaximum 10
+       }
+       StreetLampComponent "{55A0954A909C9109}" {
+        Enabled 1
+        "Emissive Color" 0.651 0.839 0.549 1
+       }
+       RplComponent "{585699AC653DD54C}" {
+        Enabled 1
+       }
+      }
+      coords 1.998 -1.229 -1.314
+      angleY -180
+      angleZ -180
+     }
+     {
+      components {
+       SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+        Enabled 1
+        m_fForceToDamageScale 350
+        m_fDamageThresholdMaximum 10
+       }
+       StreetLampComponent "{55A0954A909C9109}" {
+        Enabled 1
+        "Emissive Color" 0.651 0.839 0.549 1
+       }
+       RplComponent "{585699AC653DD54C}" {
+        Enabled 1
+       }
+      }
+      coords -2.603 -1.229 -1.368
+      angleY -180
+      angleZ -180
+     }
+     {
+      components {
+       SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+        Enabled 1
+        m_fForceToDamageScale 350
+        m_fDamageThresholdMaximum 10
+       }
+       StreetLampComponent "{55A0954A909C9109}" {
+        Enabled 1
+        "Emissive Color" 0.651 0.839 0.549 1
+       }
+       RplComponent "{585699AC653DD54C}" {
+        Enabled 1
+       }
+      }
+      coords -11.846 -1.229 -1.353
+      angleY -180
+      angleZ -180
+     }
+     {
+      components {
+       SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+        Enabled 1
+        m_fForceToDamageScale 350
+        m_fDamageThresholdMaximum 10
+       }
+       StreetLampComponent "{55A0954A909C9109}" {
+        Enabled 1
+        "Emissive Color" 0.651 0.839 0.549 1
+       }
+       RplComponent "{585699AC653DD54C}" {
+        Enabled 1
+       }
+      }
+      coords -16.425 -1.229 -1.349
+      angleY -180
+      angleZ -180
+     }
+     {
+      components {
+       SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
+        Enabled 1
+        m_fForceToDamageScale 350
+        m_fDamageThresholdMaximum 10
+       }
+       StreetLampComponent "{55A0954A909C9109}" {
+        Enabled 1
+        "Emissive Color" 0.651 0.839 0.549 1
+       }
+       RplComponent "{585699AC653DD54C}" {
+        Enabled 1
+       }
+      }
+      coords -7.687 -1.22 -1.301
+      angleY -180
+      angleZ -180
+     }
+    }
+    GenericEntity : "{562DE7B0FCE88A39}PrefabsEditable/E_FlagPole_Respawn_US.et" {
+     coords 8.019 -6.731 0.903
+    }
+   }
+  }
+ }
+}

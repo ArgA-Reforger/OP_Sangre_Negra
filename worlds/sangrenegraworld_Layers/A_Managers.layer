@@ -6,6 +6,9 @@ PerceptionManager PerceptionManager1 : "{028DAEAD63E056BE}Prefabs/World/Game/Per
 }
 SCR_BaseGameMode GameMode_Base1 : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_Base.et" {
  components {
+  SCR_GameModeSFManager "{65CAF78388D275F3}" {
+   m_bDynamicDespawn 1
+  }
   SCR_NametagConfigComponent "{571AA9E54FC9210D}" {
    m_sConfigPath "{09F7AAA14A642683}Configs/NameTags/NametagFriendlies.conf"
   }
@@ -179,6 +182,7 @@ ScriptedChatEntity : "{536D80EB494DDC43}Prefabs/MP/Campaign/CampaignMPChatEntity
 }
 TimeAndWeatherManagerEntity : "{A3BAF78F6F03315B}Prefabs/World/Game/TimeAndWeatherManager.et" {
  coords 5582.226 109.312 11221.039
+ Enabled 0
  WeatherStateMachine "{145430BBF1620448}Terrains/Common/WeatherPresets/StateMachine/WeatherStates.conf"
  "Initial Day Time" 11.19
  Year 2017
@@ -194,22 +198,6 @@ TimeAndWeatherManagerEntity : "{A3BAF78F6F03315B}Prefabs/World/Game/TimeAndWeath
 }
 RadioManagerEntity : "{B8E09FAB91C4ECCD}Prefabs/Radio/RadioManager.et" {
  coords 6364.497 350.302 5090.312
-}
-SCR_SpawnPoint : "{0BF61D9D5EF77711}Prefabs/MP/Spawning/SpawnPoint_ARGA_CP.et" {
- components {
-  SCR_MapDescriptorComponent "{54C659A97C47BDE2}" {
-   DisplayName "Inicio ArgA"
-   VisibleOnMap 1
-   Scale 10
-  }
- }
- coords 6359.891 350.608 5074.763
- angleY -128.103
- m_bShowInDeployMapOnly 0
- m_Info SCR_UIInfo "{56B4CC4ECACA2C37}" {
-  Name "Inicio ArgA"
- }
- m_bUseNearbySpawnPositions 1
 }
 SCR_LoadoutManager : "{1181E02A10EBAFA4}Prefabs/MP/Managers/Loadouts/LoadoutManager_ARGA.et" {
  coords 6366.303 350.448 5087.964
@@ -232,110 +220,6 @@ SCR_LoadoutManager : "{1181E02A10EBAFA4}Prefabs/MP/Managers/Loadouts/LoadoutMana
   }
   SCR_FactionPlayerLoadout "{65A704FEDF8D21B4}" {
   }
- }
-}
-$grp LightEntity : "{325D270D0A1FE2D4}Prefabs/Structures/Infrastructure/Lamps/LampStreet_E_01/LightPrefabs/LampStreet_E_01_light.et" {
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
-    Enabled 1
-    m_fForceToDamageScale 350
-    m_fDamageThresholdMaximum 10
-   }
-   StreetLampComponent "{55A0954A909C9109}" {
-    Enabled 1
-    "Emissive Color" 0.651 0.839 0.549 1
-   }
-   RplComponent "{585699AC653DD54C}" {
-    Enabled 1
-   }
-  }
-  coords 6799.348 356.122 8122.703
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
-    Enabled 1
-    m_fForceToDamageScale 350
-    m_fDamageThresholdMaximum 10
-   }
-   StreetLampComponent "{55A0954A909C9109}" {
-    Enabled 1
-    "Emissive Color" 0.651 0.839 0.549 1
-   }
-   RplComponent "{585699AC653DD54C}" {
-    Enabled 1
-   }
-  }
-  coords 6794.97 356.122 8122.845
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
-    Enabled 1
-    m_fForceToDamageScale 350
-    m_fDamageThresholdMaximum 10
-   }
-   StreetLampComponent "{55A0954A909C9109}" {
-    Enabled 1
-    "Emissive Color" 0.651 0.839 0.549 1
-   }
-   RplComponent "{585699AC653DD54C}" {
-    Enabled 1
-   }
-  }
-  coords 6790.369 356.122 8122.792
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
-    Enabled 1
-    m_fForceToDamageScale 350
-    m_fDamageThresholdMaximum 10
-   }
-   StreetLampComponent "{55A0954A909C9109}" {
-    Enabled 1
-    "Emissive Color" 0.651 0.839 0.549 1
-   }
-   RplComponent "{585699AC653DD54C}" {
-    Enabled 1
-   }
-  }
-  coords 6781.126 356.122 8122.807
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
-    Enabled 1
-    m_fForceToDamageScale 350
-    m_fDamageThresholdMaximum 10
-   }
-   StreetLampComponent "{55A0954A909C9109}" {
-    Enabled 1
-    "Emissive Color" 0.651 0.839 0.549 1
-   }
-   RplComponent "{585699AC653DD54C}" {
-    Enabled 1
-   }
-  }
-  coords 6776.547 356.122 8122.811
- }
- {
-  components {
-   SCR_DestructionMultiPhaseComponent "{55AAFED3CA70E245}" {
-    Enabled 1
-    m_fForceToDamageScale 350
-    m_fDamageThresholdMaximum 10
-   }
-   StreetLampComponent "{55A0954A909C9109}" {
-    Enabled 1
-    "Emissive Color" 0.651 0.839 0.549 1
-   }
-   RplComponent "{585699AC653DD54C}" {
-    Enabled 1
-   }
-  }
-  coords 6785.285 356.131 8122.859
  }
 }
 StaticModelEntity : "{7762F50A860DD074}Prefabs/Props/Military/Furniture/TableMilitary_US_01.et" {

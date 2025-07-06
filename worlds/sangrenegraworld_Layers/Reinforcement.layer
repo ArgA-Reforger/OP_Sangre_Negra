@@ -1,0 +1,113 @@
+SCR_BaseFactionTriggerEntity trigger_reinforcements {
+ coords 5442.076 110.914 10883.354
+ angleY -43.642
+ scale 0.6
+ userScript "	bool m_bAlreadyTriggered = false;"
+ TriggerShapeType "Oriented Bounding Box"
+ SphereRadius 15.7
+ BoxMaxs 2000 20 500
+ TriggerActivationType "First change"
+ PeriodicQueries 1
+ OnActivate ""\
+ "		if (m_bAlreadyTriggered)"\
+ "			return;"\
+ "		m_bAlreadyTriggered = true;"\
+ "		"\
+ "		array<string> spawns = {\"reinforcement_spawn1\", \"reinforcement_spawn2\", \"reinforcement_spawn3\", \"reinforcement_spawn4\", \"reinforcement_spawn5\"};"\
+ "		ResourceName rifleSquad = \"{329BC4FEFAE79CAF}Prefabs/Groups/MEI/Group_MEI_RifleSquad.et\";"\
+ "		ResourceName fireTeam = \"{9036410306683271}Prefabs/Groups/MEI/Group_MEI_FireTeam.et\";"\
+ "		ResourceName vehicle = \"{A2E23CB8DDCFE82E}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_base.et\";"\
+ "		ResourceName getInWaypointPrefab = \"{B049D4C74FBC0C4D}Prefabs/AI/Waypoints/AIWaypoint_GetInNearest.et\";"\
+ "		ResourceName searchDestroyWaypointPrefab = \"{B3E7B8DC2BAB8ACC}Prefabs/AI/Waypoints/AIWaypoint_SearchAndDestroy.et\";"\
+ "		"\
+ "		IEntity wpEntity = GetGame().GetWorld().FindEntityByName(\"defend_base\");"\
+ "		if (!wpEntity)"\
+ "		{"\
+ "			Print(\"No defend_base waypoint found\", LogLevel.ERROR);"\
+ "			return;"\
+ "		}"\
+ "		"\
+ "		vector wpPos = wpEntity.GetOrigin();"\
+ ""\
+ "		for (int i = 0; i < spawns.Count(); i++)"\
+ "		{"\
+ "			IEntity spawn = GetGame().GetWorld().FindEntityByName(spawns[i]);"\
+ "			if (!spawn)"\
+ "				continue;"\
+ ""\
+ "			vector pos = spawn.GetOrigin();"\
+ "			EntitySpawnParams spawnParams = EntitySpawnParams();"\
+ "			spawnParams.TransformMode = ETransformMode.WORLD;"\
+ "			spawnParams.Transform[3] = pos;"\
+ ""\
+ "			Resource groupRes;"\
+ "			if (i < 2)"\
+ "				groupRes = Resource.Load(rifleSquad);"\
+ "			else"\
+ "				groupRes = Resource.Load(fireTeam);"\
+ ""\
+ ""\
+ "			SCR_AIGroup group = SCR_AIGroup.Cast(GetGame().SpawnEntityPrefab(groupRes, null, spawnParams));"\
+ "			if (!group)"\
+ "				continue;"\
+ ""\
+ "			if (i < 2)"\
+ "			{"\
+ "				// Spawn vehicle"\
+ "				Resource vehicleRes = Resource.Load(vehicle);"\
+ "				if (vehicleRes.IsValid())"\
+ "				{"\
+ "					GetGame().SpawnEntityPrefab(vehicleRes, null, spawnParams);"\
+ "				}"\
+ ""\
+ "				// Add GetInNearest waypoint"\
+ "				Resource wpGetInRes = Resource.Load(getInWaypointPrefab);"\
+ "				if (wpGetInRes.IsValid())"\
+ "				{"\
+ "					EntitySpawnParams getInParams = EntitySpawnParams();"\
+ "					getInParams.TransformMode = ETransformMode.WORLD;"\
+ "					getInParams.Transform[3] = pos;"\
+ ""\
+ "					AIWaypoint getInWp = AIWaypoint.Cast(GetGame().SpawnEntityPrefab(wpGetInRes, null, getInParams));"\
+ "					if (getInWp)"\
+ "					{"\
+ "						group.AddWaypoint(getInWp);"\
+ "					}"\
+ "				}"\
+ "			}"\
+ ""\
+ "			// Add Search and Destroy waypoint"\
+ "			Resource wpRes = Resource.Load(searchDestroyWaypointPrefab);"\
+ "			if (wpRes.IsValid())"\
+ "			{"\
+ "				EntitySpawnParams wpParams = EntitySpawnParams();"\
+ "				wpParams.TransformMode = ETransformMode.WORLD;"\
+ "				wpParams.Transform[3] = wpPos;"\
+ ""\
+ "				AIWaypoint wp = AIWaypoint.Cast(GetGame().SpawnEntityPrefab(wpRes, null, wpParams));"\
+ "				if (wp)"\
+ "				{"\
+ "					group.AddWaypoint(wp);"\
+ "				}"\
+ "			}"\
+ "		}"\
+ "	"
+ m_sOwnerFactionKey "ARGA"
+}
+$grp GenericEntity : "{934A3C3A870634DC}PrefabsEditable/System/E_Comment.et" {
+ reinforcement_spawn1 {
+  coords 7558.389 125.472 10275.061
+ }
+ reinforcement_spawn2 {
+  coords 5798.091 123.725 8811.688
+ }
+ reinforcement_spawn3 {
+  coords 6253.018 86.792 11236.98
+ }
+ reinforcement_spawn4 {
+  coords 6624.273 88.468 11467.572
+ }
+ reinforcement_spawn5 {
+  coords 6313.969 93.187 10971.588
+ }
+}

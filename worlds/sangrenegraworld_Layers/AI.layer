@@ -1,210 +1,192 @@
-$grp SCR_AIWaypoint : "{22A875E30470BD4F}Prefabs/AI/Waypoints/AIWaypoint_Patrol.et" {
- mountain2_patrol1 {
-  coords 4929.82 109.801 11226.511
- }
- mountain2_patrol2 {
-  coords 5100.261 123.557 11436.291
- }
- mountain3_patro1 {
-  coords 5481.156 125.87 11899.374
- }
- mountain3_patrol2 {
-  coords 5797.915 123.277 11962.573
+GenericEntity Patrols_not_working {
+ coords 5680.45 109.313 11176.421
+ {
+  GenericEntity PatrolGroup2 {
+   coords 307.25 -0.001 386.798
+   {
+    GenericEntity Patrol2 : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
+     coords 0 0 0
+     {
+      $grp GenericEntity : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
+       PatrolSetUp2 {
+        coords 30.017 0.057 10.848
+        {
+         GenericEntity SlotPatrol2 : "{8D43830F02C3F114}Prefabs/Systems/ScenarioFramework/Components/SlotAI.et" {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sFactionKey "MEI"
+            m_sObjectToSpawn "{43A262F8A24DF461}Prefabs/Groups/MEI/Group_MEI_LightFireTeam.et"
+            m_WaypointSet SCR_ScenarioFrameworkWaypointSet "{65CAF78A218BF492}" {
+             m_aLayerName {
+              "SlotPatrol2" "WPs2"
+             }
+            }
+           }
+          }
+          coords -35.847 -0.021 -9.087
+          angleX 0.314
+          angleY -136.417
+          angleZ -0.473
+         }
+         GenericEntity SlotWaypoint2 : "{EBD91177954E8236}Prefabs/Systems/ScenarioFramework/Components/SlotWaypoint.et" {
+          components {
+           SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+            m_Waypoint SCR_ScenarioFrameworkWaypointCycle "{65CAF78AE09E94CF}" {
+             m_aLayersWithWaypointsToCycle {
+              "WPs2"
+             }
+            }
+           }
+          }
+          coords -32.74 -0.021 19.421
+         }
+        }
+       }
+       WPs2 {
+        coords -30.429 -0.092 -84.676
+        {
+         $grp GenericEntity : "{EBD91177954E8236}Prefabs/Systems/ScenarioFramework/Components/SlotWaypoint.et" {
+          SlotWaypointA2 {
+           components {
+            SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+             m_Waypoint SCR_ScenarioFrameworkWaypointPatrolHierarchy "{65CAF78C80013E69}" {
+              m_aSettings {
+               SCR_AIGroupFormationSetting "{65CAF78A4F0C767A}" {
+                m_eFormation StaggeredColumn
+               }
+              }
+             }
+            }
+           }
+           coords -27.031 0.092 138.05
+          }
+          SlotWaypointB2 {
+           components {
+            SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+             m_Waypoint SCR_ScenarioFrameworkWaypointPatrolHierarchy "{65CAF78C80013E69}" {
+              m_aSettings {
+               SCR_AIGroupFormationSetting "{65CAF78A4F0C767A}" {
+                m_eFormation StaggeredColumn
+               }
+              }
+             }
+            }
+           }
+           coords -289.997 0.092 -136.137
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
+  GenericEntity NewPatrols1 : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
+   coords 64.369 -0.059 79.7
+   {
+    GenericEntity Patrol1 : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
+     coords 0 0 0
+     {
+      $grp GenericEntity : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
+       PatrolSetUp1 {
+        coords -30.429 -0.092 -84.677
+        {
+         GenericEntity SlotPatrol1 : "{8D43830F02C3F114}Prefabs/Systems/ScenarioFramework/Components/SlotAI.et" {
+          components {
+           SCR_ScenarioFrameworkSlotAI "{5A26B3E02AC77BA0}" {
+            m_sFactionKey "MEI"
+            m_sObjectToSpawn "{43A262F8A24DF461}Prefabs/Groups/MEI/Group_MEI_LightFireTeam.et"
+            m_WaypointSet SCR_ScenarioFrameworkWaypointSet "{65CAF78A218BF492}" {
+             m_aLayerName {
+              "SlotPatrol1" "WPs1"
+             }
+            }
+           }
+          }
+          coords -99.166 0.151 130.924
+          angleX -0.284
+          angleY -0.003
+          angleZ 0.284
+         }
+         GenericEntity SlotWaypoint1 : "{EBD91177954E8236}Prefabs/Systems/ScenarioFramework/Components/SlotWaypoint.et" {
+          components {
+           SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+            m_Waypoint SCR_ScenarioFrameworkWaypointCycle "{65CAF78AE09E94CF}" {
+             m_aLayersWithWaypointsToCycle {
+              "WPs1"
+             }
+            }
+           }
+          }
+          coords -95.257 0.15 130.364
+         }
+        }
+       }
+       WPs1 {
+        coords -30.429 -0.092 -84.677
+        {
+         $grp GenericEntity : "{EBD91177954E8236}Prefabs/Systems/ScenarioFramework/Components/SlotWaypoint.et" {
+          SlotWaypointA1 {
+           components {
+            SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+             m_Waypoint SCR_ScenarioFrameworkWaypointPatrolHierarchy "{65CAF78C80013E69}" {
+              m_aSettings {
+               SCR_AIGroupFormationSetting "{65CAF78A4F0C767A}" {
+                m_eFormation StaggeredColumn
+               }
+              }
+             }
+            }
+           }
+           coords -77.721 0.15 136.357
+           angleX -0.568
+          }
+          SlotWaypointB1 {
+           components {
+            SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+             m_Waypoint SCR_ScenarioFrameworkWaypointPatrolHierarchy "{65CAF78C80013E69}" {
+              m_aSettings {
+               SCR_AIGroupFormationSetting "{65CAF78A4F0C767A}" {
+                m_eFormation StaggeredColumn
+               }
+              }
+              m_fCompletionRadius 3.8
+             }
+            }
+           }
+           coords -191.672 0.151 73.79
+           angleX 3.692
+           angleY 0.09
+           angleZ 4.832
+          }
+          SlotWaypointC1 {
+           components {
+            SCR_ScenarioFrameworkSlotWaypoint "{5EEEE11FAD8EE85C}" {
+             m_Waypoint SCR_ScenarioFrameworkWaypointPatrolHierarchy "{65CAF78C80013E69}" {
+              m_aSettings {
+               SCR_AIGroupFormationSetting "{65CAF78A4F0C767A}" {
+                m_eFormation StaggeredColumn
+               }
+              }
+             }
+            }
+           }
+           coords -169.343 0.15 53.373
+           angleX -20.407
+           angleZ 7.155
+          }
+         }
+        }
+       }
+      }
+     }
+    }
+   }
+  }
  }
 }
-$grp GenericEntity : "{25861AD07CEE719B}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_MG_USSR_01_PKM.et" {
- {
-  coords 5734.02 109.295 11249.265
-  angleY -96.384
- }
- {
-  coords 5792.022 108.811 11249.857
-  angleY 160.689
- }
-}
-$grp AIWaypointCycle : "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et" {
- mountain2_cycle {
-  coords 4935.105 134.993 11237.596
-  CycleWaypoints {
-   "mountain2_patrol1" "mountain2_patrol2"
-  }
- }
- mountain3_cycle {
-  coords 5633.854 127.469 12038.53
-  CycleWaypoints {
-   "mountain3_patro1" "mountain3_patro2"
-  }
- }
-}
-StaticModelEntity : "{732A335C72D8ADE2}Prefabs/Props/Military/Sandbags/Sandbag_01_bunker_burlap_foundation.et" {
- coords 5784.642 108.87 11246.769
- angleY 174.841
-}
-$grp SCR_AIGroup : "{9036410306683271}Prefabs/Groups/MEI/Group_MEI_FireTeam.et" {
- guard_base2 {
-  coords 5784.97 108.984 11246.151
-  angleY -175.854
-  m_aUnitPrefabSlots {
-   "{B582888C61E30624}Prefabs/Characters/Factions/IND/MEI/Character_MEI_LMG1.et"
-  }
-  m_aStaticWaypoints {
-   "base_guard2"
-  }
- }
- guard_base3 {
-  coords 5791.36 108.842 11251.815
-  angleY -175.854
-  m_aUnitPrefabSlots {
-   "{B582888C61E30624}Prefabs/Characters/Factions/IND/MEI/Character_MEI_LMG1.et"
-  }
-  m_aStaticWaypoints {
-   "base_guard3"
-  }
- }
- mountain_group1 {
-  coords 5351.703 139.342 10765.44
-  angleY -15
-  m_aStaticWaypoints {
-   "mountain_cycle"
-  }
- }
- mountain_group2 {
-  coords 5036.732 126.384 11351.709
-  angleY -15
-  m_aStaticWaypoints {
-   "mountain2_cycle"
-  }
- }
- mountain_group3 {
-  coords 5612.904 142.525 12073.908
-  angleY -15
-  m_aStaticWaypoints {
-   "mountain3_cycle"
-  }
- }
- guard_base4 {
-  coords 5762.102 109.301 11287.175
-  angleY -175.854
-  m_aUnitPrefabSlots {
-   "{B582888C61E30624}Prefabs/Characters/Factions/IND/MEI/Character_MEI_LMG1.et"
-  }
-  m_aStaticWaypoints {
-   "base_guard4"
-  }
- }
- guard_base5 {
-  coords 5766.183 109.305 11294.451
-  angleY -36.407
-  m_aUnitPrefabSlots {
-   "{B582888C61E30624}Prefabs/Characters/Factions/IND/MEI/Character_MEI_LMG1.et"
-  }
-  m_aStaticWaypoints {
-   "guard_base5"
-  }
- }
- guard_base6 {
-  coords 5752.389 109.338 11282.074
-  angleY -49.398
-  m_aUnitPrefabSlots {
-   "{B582888C61E30624}Prefabs/Characters/Factions/IND/MEI/Character_MEI_LMG1.et"
-  }
-  m_aStaticWaypoints {
-   "base_guard6"
-  }
- }
-}
-$grp SCR_DefendWaypoint : "{93291E72AC23930F}Prefabs/AI/Waypoints/AIWaypoint_Defend.et" {
- base_guard2 {
-  coords 5784.923 108.999 11246.547
-  CompletionRadius 1
- }
- base_guard3 {
-  coords 5791.489 108.843 11251.455
-  CompletionRadius 1
- }
- base_guard4 {
-  coords 5762.231 109.302 11286.813
-  CompletionRadius 1
- }
- base_guard5 {
-  coords 5766.475 109.319 11294.181
-  angleY 139.447
-  CompletionRadius 1
- }
- base_guard6 {
-  coords 5752.734 109.352 11281.876
-  angleY 126.456
-  CompletionRadius 1
- }
-}
-GenericEntity : "{937999008F178E82}Prefabs/Props/Military/Sandbags/Sandbag_01_short_high_burlap.et" {
- coords 5807.397 108.677 11256.186
-}
-$grp StaticModelEntity : "{93E06E731212BD96}Prefabs/Structures/Walls/BarbedWire/BarbedTape_01/BarbedTape_01_Triple.et" {
- {
-  coords 5781.078 0.001 11244.403
-  angleY 49.547
- }
- {
-  coords 5778.676 0 11242.288
-  angleY 49.547
- }
- {
-  coords 5776.31 0 11240.359
-  angleY 57.547
- }
- {
-  coords 5773.713 0 11239.424
-  angleY 75.547
- }
- {
-  coords 5770.681 0 11239.21
-  angleY 88.547
- }
- {
-  coords 5767.521 0 11238.387
-  angleY 49.547
- }
- {
-  coords 5765.318 0 11236.225
-  angleY 49.547
- }
- {
-  coords 5762.225 0.001 11235.019
-  angleY 66.547
- }
- {
-  coords 5759.411 0 11234.648
-  angleY 90.547
- }
- {
-  coords 5756.498 0 11235.308
-  angleY 110.547
- }
- {
-  coords 5754.016 0 11237.405
-  angleY 152.547
- }
-}
-$grp GenericEntity : "{BE16EE8FAA315FE2}Prefabs/Props/Military/Sandbags/Sandbag_01_long_high_burlap.et" {
- {
-  coords 5788.29 108.847 11248.968
-  angleY -23.682
- }
- {
-  coords 5795.246 108.794 11251.984
-  angleY -23.682
- }
- {
-  coords 5798.075 108.772 11253.258
-  angleY -23.682
- }
- {
-  coords 5804.878 108.708 11255.79
-  angleY -23.682
- }
-}
-GenericEntity Area1 : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Components/Area.et" {
+GenericEntity EnemyBase1 : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Components/Area.et" {
  components {
   SCR_ScenarioFrameworkArea "{59E8CDC50969206E}" {
    m_fAreaRadius 5
@@ -212,255 +194,548 @@ GenericEntity Area1 : "{C72F956E4AC6A6E7}Prefabs/Systems/ScenarioFramework/Compo
  }
  coords 5744.819 109.254 11256.121
  {
-  $grp SCR_AIWaypoint : "{22A875E30470BD4F}Prefabs/AI/Waypoints/AIWaypoint_Patrol.et" {
-   mountain_patrol1 {
-    coords -514.035 40.355 -642.033
+  $grp GenericEntity : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
+   Patrols1 {
+    coords 0 0 0
+    {
+     $grp GenericEntity : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
+      EBPatrol2 {
+       coords 0 0 0
+       {
+        $grp SCR_AIWaypoint : "{22A875E30470BD4F}Prefabs/AI/Waypoints/AIWaypoint_Patrol.et" {
+         group2_patrol {
+          coords 226.557 0.059 300.018
+          CompletionRadius 2
+         }
+         group2_patrol2 {
+          coords -36.486 0.09 34.926
+          CompletionRadius 2
+         }
+        }
+        AIWaypointCycle group2_cycle : "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et" {
+         coords 167.056 0.058 316.207
+         CycleWaypoints {
+          "group2_patrol" "group2_patrol2"
+         }
+        }
+        SCR_AIGroup group2 : "{9036410306683271}Prefabs/Groups/MEI/Group_MEI_FireTeam.et" {
+         coords 190.811 0.058 370.492
+         angleY -64.854
+         m_aStaticWaypoints {
+          "group2_cycle"
+         }
+        }
+       }
+      }
+      EBPatrol3 {
+       coords 0 0 0
+       {
+        $grp SCR_AIWaypoint : "{22A875E30470BD4F}Prefabs/AI/Waypoints/AIWaypoint_Patrol.et" {
+         group3_patrol {
+          coords 534.883 -22.53 149.776
+          CompletionRadius 2
+         }
+         group3_patrol2 {
+          coords 425.062 -21.707 -19.229
+          CompletionRadius 2
+         }
+        }
+        AIWaypointCycle group3_cycle : "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et" {
+         coords 784.466 -22.389 397.541
+         CycleWaypoints {
+          "group3_patrol" "group3_patrol2"
+         }
+        }
+        SCR_AIGroup group3 : "{9036410306683271}Prefabs/Groups/MEI/Group_MEI_FireTeam.et" {
+         coords 540.661 -22.395 157.492
+         angleY -64.854
+         m_aStaticWaypoints {
+          "group3_cycle"
+         }
+        }
+       }
+      }
+      EBPatrol4 {
+       coords 0 0 0
+       {
+        SCR_AIWaypoint group4_patrol : "{22A875E30470BD4F}Prefabs/AI/Waypoints/AIWaypoint_Patrol.et" {
+         coords 632.939 -22.542 111.87
+         CompletionRadius 2
+        }
+        AIWaypointCycle group4_cycle : "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et" {
+         coords 992.343 -23.224 528.64
+         CycleWaypoints {
+          "group4_patrol" "group4_patrol2"
+         }
+        }
+        SCR_AIGroup group4 : "{9036410306683271}Prefabs/Groups/MEI/Group_MEI_FireTeam.et" {
+         coords 748.538 -23.229 288.591
+         angleY -64.854
+         m_aStaticWaypoints {
+          "group4_cycle"
+         }
+        }
+       }
+      }
+      EBPatrolMountain {
+       coords 0 0 0
+       {
+        $grp SCR_AIWaypoint : "{22A875E30470BD4F}Prefabs/AI/Waypoints/AIWaypoint_Patrol.et" {
+         mountain_patrol1 {
+          coords -514.035 40.355 -642.033
+         }
+         mountain_patrol2 {
+          coords -334.185 22.013 -428.512
+         }
+        }
+        AIWaypointCycle mountain_cycle : "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et" {
+         coords -426.708 31.087 -533.906
+         CycleWaypoints {
+          "mountain_patrol1" "mountain_patrol2"
+         }
+        }
+        SCR_AIGroup mountain_group1 : "{9036410306683271}Prefabs/Groups/MEI/Group_MEI_FireTeam.et" {
+         coords -393.116 30.088 -490.681
+         angleY -15
+         m_aStaticWaypoints {
+          "mountain_cycle"
+         }
+        }
+       }
+      }
+      EBPatrolMountain2 {
+       coords 0 0 0
+       {
+        $grp SCR_AIWaypoint : "{22A875E30470BD4F}Prefabs/AI/Waypoints/AIWaypoint_Patrol.et" {
+         mountain2_patrol1 {
+          coords -814.999 0.547 -29.61
+         }
+         mountain2_patrol2 {
+          coords -644.558 14.303 180.17
+         }
+        }
+        AIWaypointCycle mountain2_cycle : "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et" {
+         coords -809.714 25.739 -18.525
+         CycleWaypoints {
+          "mountain2_patrol1" "mountain2_patrol2"
+         }
+        }
+        SCR_AIGroup mountain_group2 : "{9036410306683271}Prefabs/Groups/MEI/Group_MEI_FireTeam.et" {
+         coords -708.087 17.13 95.588
+         angleY -15
+         m_aStaticWaypoints {
+          "mountain2_cycle"
+         }
+        }
+       }
+      }
+      EBPatrol5 {
+       coords 0 0 0
+       {
+        $grp SCR_AIWaypoint : "{22A875E30470BD4F}Prefabs/AI/Waypoints/AIWaypoint_Patrol.et" {
+         group5_patrol {
+          coords 217.071 0.058 143.778
+          CompletionRadius 2
+         }
+         group5_patrol2 {
+          coords 88.895 -0.5 23.312
+          CompletionRadius 2
+         }
+        }
+        AIWaypointCycle group5_cycle : "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et" {
+         coords 465.193 0.026 385.427
+         CycleWaypoints {
+          "group5_patrol" "group5_patrol2"
+         }
+        }
+        SCR_AIGroup group5 : "{9036410306683271}Prefabs/Groups/MEI/Group_MEI_FireTeam.et" {
+         coords 239.513 0.06 138.906
+         angleY -64.854
+         m_aStaticWaypoints {
+          "group5_cycle"
+         }
+        }
+       }
+      }
+      EBPatrolMountain3 {
+       coords 0 0 0
+       {
+        $grp SCR_AIWaypoint : "{22A875E30470BD4F}Prefabs/AI/Waypoints/AIWaypoint_Patrol.et" {
+         mountain3_patro1 {
+          coords -263.663 16.616 643.253
+         }
+         mountain3_patrol2 {
+          coords 53.096 14.023 706.452
+         }
+        }
+        AIWaypointCycle mountain3_cycle : "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et" {
+         coords -110.965 18.215 782.409
+         CycleWaypoints {
+          "mountain3_patro1" "mountain3_patro2"
+         }
+        }
+        SCR_AIGroup mountain_group3 : "{9036410306683271}Prefabs/Groups/MEI/Group_MEI_FireTeam.et" {
+         coords -131.915 33.271 817.787
+         angleY -15
+         m_aStaticWaypoints {
+          "mountain3_cycle"
+         }
+        }
+       }
+      }
+      EBPatrolRunway {
+       coords 0 0 0
+       {
+        $grp SCR_AIWaypoint : "{22A875E30470BD4F}Prefabs/AI/Waypoints/AIWaypoint_Patrol.et" {
+         runway_patrol1 {
+          coords 341.677 0.058 601.573
+         }
+         runway_patrol2 {
+          coords -407.307 0.059 -152.56
+         }
+        }
+        AIWaypointCycle runway_cycle : "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et" {
+         coords -119.176 0.059 132.108
+         CycleWaypoints {
+          "runway_patrol1" "runway_patrol2"
+         }
+        }
+        SCR_AIGroup EBPatrol : "{9036410306683271}Prefabs/Groups/MEI/Group_MEI_FireTeam.et" {
+         coords 347.564 0.059 594.15
+         angleY 23
+         m_aUnitPrefabSlots + {
+          "{EB364CCCBCFD29A5}Prefabs/Characters/Factions/IND/MEI/Character_MEI_Rifleman2.et" "{D9D6BC6CDD27890A}Prefabs/Characters/Factions/IND/MEI/Character_MEI_LMG2.et" "{B582888C61E30624}Prefabs/Characters/Factions/IND/MEI/Character_MEI_LMG1.et" "{91D9FF2600E080AF}Prefabs/Characters/Factions/IND/MEI/Character_MEI_AG1.et" "{91D9FF2600E080AF}Prefabs/Characters/Factions/IND/MEI/Character_MEI_AG1.et"
+         }
+         m_aStaticWaypoints {
+          "runway_cycle"
+         }
+        }
+       }
+      }
+      EBPatrolTransport {
+       coords 0 0 0
+       {
+        $grp SCR_AIWaypoint : "{22A875E30470BD4F}Prefabs/AI/Waypoints/AIWaypoint_Patrol.et" {
+         transport_patrol {
+          coords 553.92 -16.093 -356.155
+         }
+         transport_patrol2 {
+          coords 422.083 -16.839 -269.425
+         }
+         transport_patrol3 {
+          coords 636.131 -22.497 116.735
+         }
+         transport_patrol4 {
+          coords 1008.993 -32.89 407.041
+         }
+         transport_patrol5 {
+          coords 1042.028 -23.823 336.43
+         }
+        }
+        AIWaypointCycle transport_cycle : "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et" {
+         coords 1011.883 -22.986 354.092
+         CycleWaypoints {
+          "transport_patrol" "transport_patrol2" "transport_patrol3" "transport_patrol4" "transport_patrol5"
+         }
+        }
+        SCR_AIGroup transport_team : "{9036410306683271}Prefabs/Groups/MEI/Group_MEI_FireTeam.et" {
+         coords 545.647 -14.842 -401.809
+         angleY 23
+         m_aUnitPrefabSlots + {
+          "{EB364CCCBCFD29A5}Prefabs/Characters/Factions/IND/MEI/Character_MEI_Rifleman2.et" "{D9D6BC6CDD27890A}Prefabs/Characters/Factions/IND/MEI/Character_MEI_LMG2.et" "{B582888C61E30624}Prefabs/Characters/Factions/IND/MEI/Character_MEI_LMG1.et" "{91D9FF2600E080AF}Prefabs/Characters/Factions/IND/MEI/Character_MEI_AG1.et" "{91D9FF2600E080AF}Prefabs/Characters/Factions/IND/MEI/Character_MEI_AG1.et"
+         }
+         m_aStaticWaypoints {
+          "transport_cycle" "defend_base"
+         }
+         m_aStaticVehicles {
+          "transport1"
+         }
+        }
+        Vehicle transport1 : "{A2E23CB8DDCFE82E}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_base.et" {
+         coords 556.033 -16.066 -408.353
+        }
+       }
+      }
+      EBPatrol1 {
+       coords -392.617 30.072 -492.22
+       {
+        $grp SCR_AIWaypoint : "{22A875E30470BD4F}Prefabs/AI/Waypoints/AIWaypoint_Patrol.et" {
+         group1_patrol {
+          coords 324.508 -30.174 353.761
+          angleX 1.137
+          angleY 0.006
+          angleZ 1.137
+          CompletionRadius 2
+         }
+         group1_patrol2 {
+          coords 399.957 -30.17 352.821
+          angleX -2.556
+          angleZ -2.837
+          CompletionRadius 2
+         }
+         group1_patrol3 {
+          coords 353.126 -29.983 481.932
+          angleX 3.409
+          angleY 0.045
+          angleZ -3.96
+          CompletionRadius 2
+         }
+        }
+        AIWaypointCycle group1_cycle : "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et" {
+         coords 331.231 -29.989 423.611
+         angleX 0.284
+         angleZ 0.568
+         CycleWaypoints {
+          "group2_patrol" "group2_patrol2"
+         }
+        }
+        SCR_AIGroup group1 : "{9036410306683271}Prefabs/Groups/MEI/Group_MEI_FireTeam.et" {
+         coords 321.693 -30.131 354.553
+         angleX -0.337
+         angleY -140.587
+         angleZ -1.38
+         m_aStaticWaypoints {
+          "group2_cycle"
+         }
+        }
+       }
+      }
+     }
+    }
    }
-   mountain_patrol2 {
-    coords -334.185 22.013 -428.512
+   BaseGuards1 {
+    coords 0 0 0
+    {
+     $grp SCR_AIGroup : "{9036410306683271}Prefabs/Groups/MEI/Group_MEI_FireTeam.et" {
+      base_guard2 {
+       coords 40.151 -0.27 -9.97
+       angleY -175.854
+       m_aUnitPrefabSlots {
+        "{B582888C61E30624}Prefabs/Characters/Factions/IND/MEI/Character_MEI_LMG1.et"
+       }
+       m_aStaticWaypoints {
+        "base_guard2"
+       }
+      }
+      base_guard3 {
+       coords 46.541 -0.412 -4.306
+       angleY -175.854
+       m_aUnitPrefabSlots {
+        "{B582888C61E30624}Prefabs/Characters/Factions/IND/MEI/Character_MEI_LMG1.et"
+       }
+       m_aStaticWaypoints {
+        "base_guard3"
+       }
+      }
+      base_guard4 {
+       coords 17.283 0.047 31.054
+       angleY -175.854
+       m_aUnitPrefabSlots {
+        "{B582888C61E30624}Prefabs/Characters/Factions/IND/MEI/Character_MEI_LMG1.et"
+       }
+       m_aStaticWaypoints {
+        "base_guard4"
+       }
+      }
+      base_guard5 {
+       coords 21.364 0.051 38.33
+       angleY -36.407
+       m_aUnitPrefabSlots {
+        "{B582888C61E30624}Prefabs/Characters/Factions/IND/MEI/Character_MEI_LMG1.et"
+       }
+       m_aStaticWaypoints {
+        "guard_base5"
+       }
+      }
+      base_guard6 {
+       coords 7.57 0.084 25.953
+       angleY -49.398
+       m_aUnitPrefabSlots {
+        "{B582888C61E30624}Prefabs/Characters/Factions/IND/MEI/Character_MEI_LMG1.et"
+       }
+       m_aStaticWaypoints {
+        "base_guard6"
+       }
+      }
+      base_guard1 {
+       coords 57.524 -0.516 -3.219
+       angleY -175.854
+       m_aUnitPrefabSlots {
+        "{B582888C61E30624}Prefabs/Characters/Factions/IND/MEI/Character_MEI_LMG1.et"
+       }
+       m_aStaticWaypoints {
+        "base_guard1"
+       }
+      }
+     }
+     $grp SCR_DefendWaypoint : "{93291E72AC23930F}Prefabs/AI/Waypoints/AIWaypoint_Defend.et" {
+      base_guardWP2 {
+       coords 40.104 -0.255 -9.574
+       CompletionRadius 1
+      }
+      base_guardWP3 {
+       coords 46.67 -0.411 -4.666
+       CompletionRadius 1
+      }
+      base_guardWP4 {
+       coords 17.412 0.048 30.692
+       CompletionRadius 1
+      }
+      base_guardWP5 {
+       coords 21.656 0.065 38.06
+       angleY 139.447
+       CompletionRadius 1
+      }
+      base_guardWP6 {
+       coords 7.915 0.098 25.755
+       angleY 126.456
+       CompletionRadius 1
+      }
+      base_guardWP1 {
+       coords 57.478 -0.502 -2.823
+       CompletionRadius 1
+      }
+     }
+    }
    }
-  }
-  AIWaypointCycle mountain_cycle : "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et" {
-   coords -426.708 31.087 -533.906
-   CycleWaypoints {
-    "mountain_patrol1" "mountain_patrol2"
+   BaseProps1 {
+    coords 0 0 0
+    {
+     $grp GenericEntity : "{25861AD07CEE719B}Prefabs/Compositions/Misc/SubCompositions/Fortifications/Sandbag_MG_USSR_01_PKM.et" {
+      {
+       coords -10.799 0.041 -6.856
+       angleY -96.384
+      }
+      {
+       coords 47.203 -0.443 -6.264
+       angleY 160.689
+      }
+     }
+     StaticModelEntity : "{732A335C72D8ADE2}Prefabs/Props/Military/Sandbags/Sandbag_01_bunker_burlap_foundation.et" {
+      coords 39.823 -0.384 -9.353
+      angleY 174.841
+     }
+     GenericEntity : "{937999008F178E82}Prefabs/Props/Military/Sandbags/Sandbag_01_short_high_burlap.et" {
+      coords 62.578 -0.577 0.064
+     }
+     $grp StaticModelEntity : "{93E06E731212BD96}Prefabs/Structures/Walls/BarbedWire/BarbedTape_01/BarbedTape_01_Triple.et" {
+      {
+       coords 36.259 -0.371 -11.718
+       angleY 49.547
+      }
+      {
+       coords 33.857 -0.372 -13.833
+       angleY 49.547
+      }
+      {
+       coords 31.491 -0.356 -15.762
+       angleY 57.547
+      }
+      {
+       coords 28.894 -0.326 -16.697
+       angleY 75.547
+      }
+      {
+       coords 25.862 -0.284 -16.911
+       angleY 88.547
+      }
+      {
+       coords 22.702 -0.265 -17.734
+       angleY 49.547
+      }
+      {
+       coords 20.499 -0.264 -19.896
+       angleY 49.547
+      }
+      {
+       coords 17.406 -0.24 -21.103
+       angleY 66.547
+      }
+      {
+       coords 14.592 -0.201 -21.473
+       angleY 90.547
+      }
+      {
+       coords 11.679 -0.163 -20.813
+       angleY 110.547
+      }
+      {
+       coords 9.197 -0.128 -18.716
+       angleY 152.547
+      }
+     }
+     $grp GenericEntity : "{BE16EE8FAA315FE2}Prefabs/Props/Military/Sandbags/Sandbag_01_long_high_burlap.et" {
+      {
+       coords 43.471 -0.407 -7.153
+       angleY -23.682
+      }
+      {
+       coords 50.427 -0.46 -4.137
+       angleY -23.682
+      }
+      {
+       coords 53.256 -0.482 -2.863
+       angleY -23.682
+      }
+      {
+       coords 60.059 -0.546 -0.331
+       angleY -23.682
+      }
+     }
+     GenericEntity : "{F0EC223F2A1094C0}Prefabs/Props/Military/Sandbags/Sandbag_01_bunker_burlap.et" {
+      components {
+       Hierarchy "{5A58883F887CA700}" {
+       }
+      }
+      coords 57.283 -0.546 -3.134
+      angleY 162.992
+     }
+    }
    }
-  }
-  GenericEntity Layer1 : "{5F9FFF4BF027B3A3}Prefabs/Systems/ScenarioFramework/Components/Layer.et" {
-   coords 0 0 0
-   {
-    $grp SCR_AIWaypoint : "{22A875E30470BD4F}Prefabs/AI/Waypoints/AIWaypoint_Patrol.et" {
-     group1_patrol {
-      coords -28.964 -0.138 -82.209
-      CompletionRadius 2
-     }
-     group1_patrol2 {
-      coords -7.031 -0.048 -27.245
-      CompletionRadius 2
-     }
-     group1_patrol3 {
-      coords 49.19 0.628 -86.295
-      CompletionRadius 2
-     }
-     group2_patrol {
-      coords 227.19 0.058 301.27
-      CompletionRadius 2
-     }
-     group2_patrol2 {
-      coords -36.356 0.09 35.265
-      CompletionRadius 2
-     }
-     group3_patrol {
-      coords 534.883 -22.53 149.776
-      CompletionRadius 2
-     }
-     group3_patrol2 {
-      coords 425.062 -21.707 -19.229
-      CompletionRadius 2
-     }
-     group4_patrol {
-      coords 632.939 -22.542 111.87
-      CompletionRadius 2
-     }
-     group4_patrol2 {
-      coords 742.76 -23.365 280.875
-      CompletionRadius 2
-     }
-     group5_patrol {
-      coords 217.071 0.058 143.777
-      CompletionRadius 2
-     }
-     group5_patrol2 {
-      coords 88.895 -0.5 23.312
-      CompletionRadius 2
-     }
-     transport_patrol {
-      coords 553.92 -16.093 -356.155
-     }
-     transport_patrol2 {
-      coords 422.083 -16.839 -269.425
-     }
-     transport_patrol3 {
-      coords 636.131 -22.497 116.735
-     }
-     transport_patrol4 {
-      coords 1008.993 -32.89 407.041
-     }
-     transport_patrol5 {
-      coords 1042.028 -23.823 336.43
-     }
-     runway_patrol1 {
-      coords 341.677 0.058 601.573
-     }
-     runway_patrol2 {
-      coords -407.307 0.059 -152.56
-     }
-    }
-    $grp AIWaypointCycle : "{35BD6541CBB8AC08}Prefabs/AI/Waypoints/AIWaypoint_Cycle.et" {
-     group1_cycle {
-      coords 2.668 -1.028 -65.329
-      CycleWaypoints {
-       "group1_patrol" "group1_patrol2" "group1_patrol3"
+   DefendSectors1 {
+    coords 0 0 0
+    {
+     $grp SCR_AIGroup : "{9036410306683271}Prefabs/Groups/MEI/Group_MEI_FireTeam.et" {
+      group_defend_base_1 {
+       coords 11.118 -0.005 15.252
+       angleY -64.854
+       m_aStaticWaypoints {
+        "defend_base"
+       }
+      }
+      group_defend_block_team_1 {
+       coords 179.148 1.729 101.873
+       m_aStaticWaypoints {
+        "group6_defend"
+       }
+      }
+      barracks_team_1 {
+       coords 425.532 0.058 355.603
+       angleY 23
+       m_aUnitPrefabSlots + {
+        "{EB364CCCBCFD29A5}Prefabs/Characters/Factions/IND/MEI/Character_MEI_Rifleman2.et" "{D9D6BC6CDD27890A}Prefabs/Characters/Factions/IND/MEI/Character_MEI_LMG2.et" "{B582888C61E30624}Prefabs/Characters/Factions/IND/MEI/Character_MEI_LMG1.et" "{91D9FF2600E080AF}Prefabs/Characters/Factions/IND/MEI/Character_MEI_AG1.et" "{91D9FF2600E080AF}Prefabs/Characters/Factions/IND/MEI/Character_MEI_AG1.et"
+       }
+       m_aStaticWaypoints {
+        "barracks_defend"
+       }
       }
      }
-     group2_cycle {
-      coords 211.766 0.058 276.914
-      CycleWaypoints {
-       "group2_patrol" "group2_patrol2"
+     $grp SCR_DefendWaypoint : "{93291E72AC23930F}Prefabs/AI/Waypoints/AIWaypoint_Defend.et" {
+      group_defend_baseWP_1 {
+       coords 2.425 -0.001 -0.014
+       CompletionRadius 15.3
+      }
+      group_defend_block_teamWP_1 {
+       coords 185.117 4.624 84.673
+       CompletionRadius 5.1
+      }
+      barracksWP_team_1 {
+       coords 417.94 0.059 347.283
+       AIBehaviorTreeMoveTo "{B3B5C3DEED39F11D}AI/BehaviorTrees/Waypoints/WP_Scout.bt"
       }
      }
-     group3_cycle {
-      coords 784.466 -22.389 397.541
-      CycleWaypoints {
-       "group3_patrol" "group3_patrol2"
-      }
-     }
-     group4_cycle {
-      coords 992.343 -23.224 528.64
-      CycleWaypoints {
-       "group4_patrol" "group4_patrol2"
-      }
-     }
-     group5_cycle {
-      coords 465.193 0.026 385.427
-      CycleWaypoints {
-       "group5_patrol" "group5_patrol2"
-      }
-     }
-     transport_cycle {
-      coords 1011.883 -22.986 354.092
-      CycleWaypoints {
-       "transport_patrol" "transport_patrol2" "transport_patrol3" "transport_patrol4" "transport_patrol5"
-      }
-     }
-     runway_cycle {
-      coords -119.176 0.059 132.108
-      CycleWaypoints {
-       "runway_patrol1" "runway_patrol2"
-      }
-     }
-    }
-    SCR_AIGroup group1 : "{43A262F8A24DF461}Prefabs/Groups/MEI/Group_MEI_LightFireTeam.et" {
-     coords -30.429 -0.092 -84.677
-     m_aStaticWaypoints {
-      "group1_cycle"
-     }
-    }
-    $grp SCR_AIGroup : "{9036410306683271}Prefabs/Groups/MEI/Group_MEI_FireTeam.et" {
-     group_base {
-      coords 11.118 -0.005 15.252
-      angleY -64.854
-      m_aStaticWaypoints {
-       "defend_base"
-      }
-     }
-     group2 {
-      coords 240.002 0.058 321.595
-      angleY -64.854
-      m_aStaticWaypoints {
-       "group2_cycle"
-      }
-     }
-     group3 {
-      coords 540.661 -22.395 157.492
-      angleY -64.854
-      m_aStaticWaypoints {
-       "group3_cycle"
-      }
-     }
-     group4 {
-      coords 748.538 -23.229 288.591
-      angleY -64.854
-      m_aStaticWaypoints {
-       "group4_cycle"
-      }
-     }
-     group5 {
-      coords 239.513 0.06 138.906
-      angleY -64.854
-      m_aStaticWaypoints {
-       "group5_cycle"
-      }
-     }
-     group6 {
-      coords 179.148 1.729 101.873
-      m_aStaticWaypoints {
-       "group6_defend"
-      }
-     }
-     transport_team {
-      coords 545.647 -14.842 -401.809
-      angleY 23
-      m_aUnitPrefabSlots + {
-       "{EB364CCCBCFD29A5}Prefabs/Characters/Factions/IND/MEI/Character_MEI_Rifleman2.et" "{D9D6BC6CDD27890A}Prefabs/Characters/Factions/IND/MEI/Character_MEI_LMG2.et" "{B582888C61E30624}Prefabs/Characters/Factions/IND/MEI/Character_MEI_LMG1.et" "{91D9FF2600E080AF}Prefabs/Characters/Factions/IND/MEI/Character_MEI_AG1.et" "{91D9FF2600E080AF}Prefabs/Characters/Factions/IND/MEI/Character_MEI_AG1.et"
-      }
-      m_aStaticWaypoints {
-       "transport_cycle" "defend_base"
-      }
-      m_aStaticVehicles {
-       "transport1"
-      }
-     }
-     barracks_team {
-      coords 425.532 0.058 355.603
-      angleY 23
-      m_aUnitPrefabSlots + {
-       "{EB364CCCBCFD29A5}Prefabs/Characters/Factions/IND/MEI/Character_MEI_Rifleman2.et" "{D9D6BC6CDD27890A}Prefabs/Characters/Factions/IND/MEI/Character_MEI_LMG2.et" "{B582888C61E30624}Prefabs/Characters/Factions/IND/MEI/Character_MEI_LMG1.et" "{91D9FF2600E080AF}Prefabs/Characters/Factions/IND/MEI/Character_MEI_AG1.et" "{91D9FF2600E080AF}Prefabs/Characters/Factions/IND/MEI/Character_MEI_AG1.et"
-      }
-      m_aStaticWaypoints {
-       "barracks_defend"
-      }
-     }
-     runway_team {
-      coords 347.564 0.059 594.15
-      angleY 23
-      m_aUnitPrefabSlots + {
-       "{EB364CCCBCFD29A5}Prefabs/Characters/Factions/IND/MEI/Character_MEI_Rifleman2.et" "{D9D6BC6CDD27890A}Prefabs/Characters/Factions/IND/MEI/Character_MEI_LMG2.et" "{B582888C61E30624}Prefabs/Characters/Factions/IND/MEI/Character_MEI_LMG1.et" "{91D9FF2600E080AF}Prefabs/Characters/Factions/IND/MEI/Character_MEI_AG1.et" "{91D9FF2600E080AF}Prefabs/Characters/Factions/IND/MEI/Character_MEI_AG1.et"
-      }
-      m_aStaticWaypoints {
-       "runway_cycle"
-      }
-     }
-     guard_base1 {
-      coords 57.524 -0.516 -3.219
-      angleY -175.854
-      m_aUnitPrefabSlots {
-       "{B582888C61E30624}Prefabs/Characters/Factions/IND/MEI/Character_MEI_LMG1.et"
-      }
-      m_aStaticWaypoints {
-       "base_guard1"
-      }
-     }
-    }
-    $grp SCR_DefendWaypoint : "{93291E72AC23930F}Prefabs/AI/Waypoints/AIWaypoint_Defend.et" {
-     defend_base {
-      coords 2.425 -0.001 -0.014
-      CompletionRadius 15.3
-     }
-     group6_defend {
-      coords 185.117 4.624 84.673
-      CompletionRadius 5.1
-     }
-     barracks_defend {
-      coords 417.94 0.059 347.283
-     }
-     base_guard1 {
-      coords 57.478 -0.502 -2.823
-      CompletionRadius 1
-     }
-    }
-    Vehicle transport1 : "{A2E23CB8DDCFE82E}Prefabs/Vehicles/Wheeled/Ural4320/Ural4320_transport_CIV_base.et" {
-     coords 556.033 -16.066 -408.353
     }
    }
   }
  }
-}
-GenericEntity : "{F0EC223F2A1094C0}Prefabs/Props/Military/Sandbags/Sandbag_01_bunker_burlap.et" {
- components {
-  Hierarchy "{5A58883F887CA700}" {
-  }
- }
- coords 5802.102 108.708 11252.987
- angleY 162.992
 }
