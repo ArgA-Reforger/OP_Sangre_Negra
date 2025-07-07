@@ -1,0 +1,11 @@
+# VSC
+.history
+*.code-workspace
+acme.json
+
+# Pycharm
+.idea
+.idea/
+
+#environment
+.env

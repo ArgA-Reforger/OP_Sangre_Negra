@@ -12,6 +12,9 @@ SCR_BaseGameMode GameMode_Base1 : "{0F307326459A1395}Prefabs/MP/Modes/GameMode_B
   SCR_NametagConfigComponent "{571AA9E54FC9210D}" {
    m_sConfigPath "{09F7AAA14A642683}Configs/NameTags/NametagFriendlies.conf"
   }
+  SCR_NightModeGameModeComponent "{5D50E84688D5A408}" {
+   m_bAllowGlobalNightMode 1
+  }
   SCR_RespawnBriefingComponent "{65C355DB693815D7}" {
    m_sJournalConfigPath "{EBFEB0E907C97C37}Configs/Journal/JournalOPSangreNegra.conf"
   }
@@ -182,7 +185,6 @@ ScriptedChatEntity : "{536D80EB494DDC43}Prefabs/MP/Campaign/CampaignMPChatEntity
 }
 TimeAndWeatherManagerEntity : "{A3BAF78F6F03315B}Prefabs/World/Game/TimeAndWeatherManager.et" {
  coords 5582.226 109.312 11221.039
- Enabled 0
  WeatherStateMachine "{145430BBF1620448}Terrains/Common/WeatherPresets/StateMachine/WeatherStates.conf"
  "Initial Day Time" 11.19
  Year 2017
